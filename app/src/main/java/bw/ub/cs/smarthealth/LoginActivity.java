@@ -63,13 +63,15 @@ public class LoginActivity extends AppCompatActivity{
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-    private TextView forgotPasswordTextView;
+    private TextView anonymousTextView;
     private TextView createAccountTextView;
     private EditText userNameEditText;
     private Button mEmailSignInButton;
     private boolean signUp = false;
     private TextInputLayout userName;
     private DatabaseReference mUsersDBref;
+    public static String LOGIN_ANONYMOUS_TAG = "anonymous";
+    public String loginTag;
 
     @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +99,7 @@ public class LoginActivity extends AppCompatActivity{
             userNameEditText = findViewById(R.id.userNameEditText);
             userName.animate().translationXBy(-1000).setDuration(0).start();
             mPasswordView = findViewById(R.id.password);
+            anonymousTextView = findViewById(R.id.txt_anonymous);
             // Set up the login form.
             mEmailView = findViewById(R.id.email);
 
@@ -167,7 +170,9 @@ public class LoginActivity extends AppCompatActivity{
                 public void onClick(View view) {
                     //if not in sign up state attempt to login
                     if (!signUp) {
-                        attemptLogin();
+
+                            attemptLogin();
+
                     }
                     //if not in sign in state attempt sign up
                     else {
@@ -177,7 +182,13 @@ public class LoginActivity extends AppCompatActivity{
                     }
                 }
             });
-
+anonymousTextView.setOnClickListener(new OnClickListener() {
+    @Override
+        public void onClick(View v) {
+        loginTag = LOGIN_ANONYMOUS_TAG;
+        attemptLogin();
+            }
+            });
             mLoginFormView = findViewById(R.id.email_login_form);
             mProgressView = findViewById(R.id.login_progress);
 
@@ -303,7 +314,10 @@ public class LoginActivity extends AppCompatActivity{
 
 
     private void attemptSignUp() {
-
+        if(loginTag.equals(LOGIN_ANONYMOUS_TAG)){
+            auth.signInAnonymously();
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        }
 
         // Reset errors.
         userNameEditText.setError(null);
@@ -392,7 +406,10 @@ public class LoginActivity extends AppCompatActivity{
      */
     private void attemptLogin() {
 
-
+        if(loginTag.equals(LOGIN_ANONYMOUS_TAG)){
+            auth.signInAnonymously();
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        }
         // Reset errors.
         mEmailView.setError(null);
         mPasswordView.setError(null);

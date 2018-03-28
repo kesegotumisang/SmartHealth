@@ -26,11 +26,13 @@
                 android:layout_height="20dp"
                 android:layout_marginBottom="8dp"
                 android:visibility="gone" />
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ub_logo"
-                android:contentDescription="@string/app_name" />
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ub_logo" />
+
             <RelativeLayout
                 android:id="@+id/email_login_form"
                 android:layout_width="match_parent"
@@ -39,29 +41,28 @@
 
                 <LinearLayout
                     android:id="@+id/t"
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_alignParentLeft="false"
                     android:layout_alignParentStart="false"
-                    android:layout_centerInParent="true">
-
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
 
 
                     <android.support.design.widget.TextInputLayout
                         android:id="@+id/userName"
-                        android:visibility="gone"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:visibility="gone">
 
                         <android.support.design.widget.TextInputEditText
                             android:id="@+id/userNameEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Username"
-                            android:scrollHorizontally="true"
                             android:inputType="textPersonName"
                             android:maxLines="1"
+                            android:scrollHorizontally="true"
                             android:singleLine="true" />
 
                     </android.support.design.widget.TextInputLayout>
@@ -75,10 +76,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/prompt_email"
-                            android:scrollHorizontally="true"
                             android:inputType="textEmailAddress"
                             android:maxLines="1"
-                            android:singleLine="true"/>
+                            android:scrollHorizontally="true"
+                            android:singleLine="true" />
 
                     </android.support.design.widget.TextInputLayout>
 
@@ -91,15 +92,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/prompt_password"
+                            android:imeActionId="@+id/login"
                             android:imeActionLabel="@string/action_sign_in_short"
                             android:imeOptions="actionUnspecified"
                             android:inputType="textPassword"
-                            android:imeActionId="@+id/login"
                             android:maxLines="1"
                             android:singleLine="true" />
 
                     </android.support.design.widget.TextInputLayout>
-
 
 
                 </LinearLayout>
@@ -109,19 +109,28 @@
                     style="?android:textAppearanceSmall"
                     android:layout_width="248dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/action_sign_in"
-                    android:textStyle="bold"
+                    android:layout_above="@+id/txt_anonymous"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginBottom="48dp"
-                    android:layout_above="@+id/createAccountTextView"
-                    android:layout_centerHorizontal="true" />
+                    android:text="Anonynous Login"
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/txt_anonymous"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_above="@id/createAccountTextView"
+                    android:text="Anonynous Login"/>
+
+                <TextView
+                    android:id="@+id/createAccountTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true"
-                    android:text="Sign up"
-                    android:id="@+id/createAccountTextView" />
+                    android:text="Sign up" />
+
 
             </RelativeLayout>
 

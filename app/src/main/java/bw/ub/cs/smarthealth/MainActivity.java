@@ -1,5 +1,7 @@
 package bw.ub.cs.smarthealth;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,13 +13,32 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,11 +57,25 @@ public class MainActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
+    //Firebase Authentication
+    public FirebaseAuth auth;
+    public static FirebaseDatabase firebaseDatabase;
+    public static DatabaseReference reference1;
+    public static DatabaseReference reference2;
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        auth = FirebaseAuth.getInstance();
 
+        if (auth.getCurrentUser() == null){
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
@@ -56,14 +91,16 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
+
+
 
     }
 
@@ -83,7 +120,9 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+            auth.signOut();
+            startActivity(new Intent(MainActivity.this,LoginActivity.class));
             return true;
         }
 
@@ -98,6 +137,18 @@ public class MainActivity extends AppCompatActivity {
          * The fragment argument representing the section number for this
          * fragment.
          */
+
+        ListView usersList;
+        TextView noUsersText;
+        ArrayList<String> al = new ArrayList<>();
+        int totalUsers = 0;
+        ProgressDialog pd;
+
+        LinearLayout layout;
+        RelativeLayout layout_2;
+        ImageView sendButton;
+        EditText messageArea;
+        ScrollView scrollView;
         private static final String ARG_SECTION_NUMBER = "section_number";
 
         public PlaceholderFragment() {
@@ -119,9 +170,100 @@ public class MainActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+
+            firebaseDatabase = FirebaseDatabase.getInstance();
+            //Get the Current User's Chat
+            reference1 = firebaseDatabase.getReference().child("messages/"+ UserDetails.chatWith+ "_"+ UserDetails.username);
+            //Get the Practitioner's Chat
+            reference2 = firebaseDatabase.getReference().child("messages/"+ UserDetails.username+ "_"+ UserDetails.chatWith);
+            layout = rootView.findViewById(R.id.layout1);
+            layout_2 = rootView.findViewById(R.id.layout2);
+            sendButton = rootView.findViewById(R.id.sendButton);
+            messageArea = rootView.findViewById(R.id.messageArea);
+            scrollView = rootView.findViewById(R.id.scrollView);
+
+
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String messageText = messageArea.getText().toString();
+
+                if(!messageText.equals("")){
+                    Map<String, String> map = new HashMap<String, String>();
+                    map.put("message", messageText);
+                    map.put("user", UserDetails.username);
+                    reference1.push().setValue(map);
+                    reference2.push().setValue(map);
+                    messageArea.setText("");
+                }
+            }
+        });
+
+            /*reference1.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+                    //GenericTypeIndicator genericTypeIndicator = dataSnapshot.
+                    Map map = dataSnapshot.getValue(Map.class);
+                    String message = map.get("message").toString();
+                    String userName = map.get("user").toString();
+
+                    if(userName.equals(UserDetails.username)){
+                        addMessageBox("You:-\n" + message, 1);
+                    }
+                    else{
+                        addMessageBox(UserDetails.chatWith + ":-\n" + message, 2);
+                    }
+                }
+
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+
+            });
+
+*/
+
+
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
+        }
+        public void addMessageBox(String message, int type){
+            TextView textView = new TextView(getContext());
+            textView.setText(message);
+
+            LinearLayout.LayoutParams lp2 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            lp2.weight = 1.0f;
+
+            if(type == 1) {
+                lp2.gravity = Gravity.LEFT;
+                textView.setBackgroundResource(R.drawable.bubble_in);
+            }
+            else{
+                lp2.gravity = Gravity.RIGHT;
+                textView.setBackgroundResource(R.drawable.bubble_out);
+            }
+            textView.setLayoutParams(lp2);
+            layout.addView(textView);
+            scrollView.fullScroll(View.FOCUS_DOWN);
         }
     }
 
