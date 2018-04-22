@@ -20,4 +20,7 @@
     <string name="tab_text_2">Useful Information</string>
     <string name="tab_text_3">Tab 3</string>
     <string name="action_logout">Logout</string>
+    <string name="search_title">Search</string>
+    <string name="chat">Chat</string>
+    <string name="todo">TODO</string>
 </resources>

@@ -1,79 +1,27 @@
 {
   "project_info": {
-    "project_number": "562590052197",
-    "firebase_url": "https://introtofirebase.firebaseio.com",
-    "project_id": "introtofirebase",
-    "storage_bucket": "introtofirebase.appspot.com"
+    "project_number": "204565227213",
+    "firebase_url": "https://ub-smart-health.firebaseio.com",
+    "project_id": "ub-smart-health",
+    "storage_bucket": "ub-smart-health.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:562590052197:android:86e48428791723b0",
-        "android_client_info": {
-          "package_name": "bw.co.debswana.debswanawellness"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "562590052197-o36nh705u0tdftpj62dc3dcg76hrppnh.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "bw.co.debswana.debswanawellness",
-            "certificate_hash": "15d3bed3096023eebd4426e2a476b802e8db310b"
-          }
-        },
-        {
-          "client_id": "562590052197-4vcrjkekq61b8qiqk02r8hk2qporj6lv.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyC_ur_SeOfqTbwWhwiGJMfBdDMLpKJgGls"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "562590052197-4vcrjkekq61b8qiqk02r8hk2qporj6lv.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:562590052197:android:4d3de573febfec8e",
+        "mobilesdk_app_id": "1:204565227213:android:4d3de573febfec8e",
         "android_client_info": {
           "package_name": "bw.ub.cs.smarthealth"
         }
       },
       "oauth_client": [
         {
-          "client_id": "562590052197-esqdpigdp9sh7m0jge0ajsjj4e8rpp1r.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "bw.ub.cs.smarthealth",
-            "certificate_hash": "f0c2f4358fe30b46478f73d7cfbb0a2264d66f5f"
-          }
-        },
-        {
-          "client_id": "562590052197-4vcrjkekq61b8qiqk02r8hk2qporj6lv.apps.googleusercontent.com",
+          "client_id": "204565227213-1pr7nla1r8f3airj74aepuce98nmkqqv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC_ur_SeOfqTbwWhwiGJMfBdDMLpKJgGls"
+          "current_key": "AIzaSyCPwD-WyKwyfPMpdFh7UZ6_YUdsHIe7tMg"
         }
       ],
       "services": {
@@ -81,13 +29,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "562590052197-4vcrjkekq61b8qiqk02r8hk2qporj6lv.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2

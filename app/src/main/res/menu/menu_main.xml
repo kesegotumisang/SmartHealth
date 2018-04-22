@@ -6,6 +6,11 @@
         android:id="@+id/action_logout"
         android:title="@string/action_logout"
         app:showAsAction="never" />
+    <item android:id="@+id/action_search"
+        android:title="@string/search_title"
+        android:icon="@drawable/ic_search"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="collapseActionView|ifRoom" />
 
 
 </menu>
