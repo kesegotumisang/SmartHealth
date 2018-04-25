@@ -134,7 +134,7 @@ public class ChatFragment extends Fragment implements View.OnClickListener {
         String username = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
         String guid = FirebaseAuth.getInstance().getCurrentUser().getProviderData().get(0).getEmail().split("@")[0];
 //        String message =  getEditTextString();
-        String profileImg = FirebaseAuth.getInstance().getCurrentUser().getPhotoUrl().toString();
+ String profileImg = "https://user-images.githubusercontent.com/5565417/39099729-7bcd6af6-467f-11e8-938b-93d5397d93a6.png";
         MessageModel messageModel = new MessageModel(new Date().toString(), username, uid, key, message, guid, profileImg);
         databaseReference.setValue(messageModel).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

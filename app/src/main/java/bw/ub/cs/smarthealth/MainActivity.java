@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -47,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
     public static FirebaseDatabase firebaseDatabase;
     public static DatabaseReference reference1;
     public static DatabaseReference reference2;
+    public FragmentManager fragmentManager;
+    public Fragment fragment;
+
+    //Views
+    Button chatButton, newsButton, symptomsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +65,19 @@ public class MainActivity extends AppCompatActivity {
         }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
 
+        chatButton = findViewById(R.id.button_chat);
+        symptomsButton = findViewById(R.id.btn_symptoms);
+        newsButton = findViewById(R.id.btn_news);
+
+       chatButton.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+
+               startActivity(new Intent(MainActivity.this, HomeActivity.class));
+
+           }
+       });
 
 
 
@@ -84,8 +100,12 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_search) {
-            //auth.signOut();
-            //startActivity(new Intent(MainActivity.this,LoginActivity.class));
+
+            return true;
+        }
+        else if (id == R.id.action_logout) {
+            auth.signOut();
+            startActivity(new Intent(MainActivity.this,LoginActivity.class));
             return true;
         }
 
