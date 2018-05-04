@@ -24,6 +24,7 @@
     <string name="chat">Chat</string>
     <string name="todo">TODO</string>
     <string name="title_activity_home">HomeActivity</string>
+    <string name="newsAPIKey">ac525b80287b45faba0c9e587035da52</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
