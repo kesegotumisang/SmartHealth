@@ -46,6 +46,10 @@ public class ChatFragment extends Fragment implements View.OnClickListener {
     private String message;
     private RecyclerView recyclerView;
     private ProgressBar progressBar;
+    //DatabaseReference ref1,ref2 ;//=
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    DatabaseReference mRef ;//= firebaseDatabase.getReference().child(Constants.CHATS);
+    DatabaseReference mRef2;// = firebaseDatabase.getReference().child(Constants.CHATS);
 
     public ChatFragment() {
         // Required empty public constructor
@@ -81,8 +85,12 @@ public class ChatFragment extends Fragment implements View.OnClickListener {
     }
 
     void loadData(){
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference mRef = firebaseDatabase.getReference().child(Constants.CHATS);
+
+        mRef = firebaseDatabase.getReference().child(Constants.CHATS);
+        mRef2 = firebaseDatabase.getReference().child(Constants.CHATS);
+
+               // DatabaseReference mRef = firebaseDatabase.getReference().child(Constants.CHATS);
+
 
         mRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
