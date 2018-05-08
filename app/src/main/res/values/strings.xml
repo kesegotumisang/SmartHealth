@@ -24,6 +24,9 @@
     <string name="chat">Chat</string>
     <string name="todo">TODO</string>
     <string name="title_activity_home">HomeActivity</string>
+
+    <string name="auth_failed">Authentication failed, check your email and password or sign up</string>
+    <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
     <string name="newsAPIKey">ac525b80287b45faba0c9e587035da52</string>
 
     <!-- TODO: Remove or change this placeholder text -->
