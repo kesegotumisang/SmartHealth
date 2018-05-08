@@ -16,7 +16,7 @@
             android:textColorHint="#CFD8DC"
             android:gravity="center"
             android:background="@android:color/transparent"
-            android:hint="Type a message..."
+            android:hint="Type a message"
             android:id="@+id/messageArea"
             android:maxHeight="80dp"
             />
