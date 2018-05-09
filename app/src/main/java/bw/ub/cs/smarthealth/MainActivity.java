@@ -35,6 +35,16 @@ public class MainActivity extends AppCompatActivity {
         chatButton = findViewById(R.id.button_chat);
         Button stiFactsButton = findViewById(R.id.btn_sti_facts);
         Button commonSTIButton = findViewById(R.id.btn_common_sti);
+        Button symptoms = findViewById(R.id.btn_symptoms);
+
+        symptoms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(MainActivity.this, SymptomsActivity.class));
+
+            }
+        });
 
        chatButton.setOnClickListener(new View.OnClickListener() {
            @Override

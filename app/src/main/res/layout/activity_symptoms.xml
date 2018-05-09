@@ -1,31 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<WebView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/webView"
     tools:context=".SymptomsActivity">
-<android.support.v4.widget.NestedScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fadeScrollbars="false"
-    android:scrollbarFadeDuration="0"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
-    <WebView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/webView">
 
-    </WebView>
-</android.support.v4.widget.NestedScrollView>
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-7dp"
-        android:indeterminate="true"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
 <android.support.design.widget.FloatingActionButton
@@ -35,4 +16,4 @@
     android:layout_gravity="bottom|end"
     android:layout_margin="@dimen/fab_margin"
     app:srcCompat="@drawable/ic_home_white_24dp"/>
-</android.support.design.widget.CoordinatorLayout>
+</WebView>

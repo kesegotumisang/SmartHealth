@@ -17,7 +17,13 @@ public class STIFactsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle("STI Facts");
 
-        String text = "<ol  > " +
+        String text = "<ol> " +
+                "<li>You can get an STI the first time you have sex.<li>" +
+                "<li>You can get an STI even if you know your partner.<li>" +
+                "<li>You can’t tell if someone has an STI by looking at them.<li>" +
+                "<li>You can get STIs from oral sex.\n" +
+                "<li>You can be infected with more than one STI at a time.<li>" +
+                "<li>You can get an STI more than once.<li>" +
                 "<li>New estimates show that there are about 20 million new sexually transmitted infections in the United States each year.</li>" +
                 "<li>Young people, between the ages of 15 to 24, account for 50% of all new STDs, although they represent just 25% of the sexually experienced population</li>" +
                 "<li>46% of American high school students have had sexual intercourse and potentially are at risk for human immunodeficiency virus (HIV) infection and other STDs. Get yourself tested for HIV -- and tell others you did! Sign up for Update Your Status.</li>" +

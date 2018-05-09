@@ -13,6 +13,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,36 +44,34 @@ public class SymptomsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //getWindow().requestFeature(Window.FEATURE_PROGRESS);
-       setContentView(R.layout.activity_symptoms);
-//        userName="nobuntubayani@gmail.com";
-//        password = "Dp79Zbx6PFj38Rks4";
-//        authUrl = "https\\://sandbox-authservice.priaid.ch/login";
-//        healthUrl = "https\\://sandbox-healthservice.priaid.ch";
-//        language = "en-gb";
+        getWindow().requestFeature(Window.FEATURE_PROGRESS);
+        webView = new WebView(this);
+        setContentView(webView  );
 
-       /* try {
-            _diagnosisClient = new DiagnosisClient(userName, password, authUrl, language, healthUrl);
-            simulate();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
+       webView.getSettings().setJavaScriptEnabled(true);
 
-        webView = (WebView) findViewById(R.id.webView);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-       // imgHeader = (ImageView) findViewById(R.id.backdrop);
-        //WebView webView = findViewById(R.id.webView);
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.setWebViewClient(new Callback());  //HERE IS THE MAIN CHANGE
+        final Activity activity = this;
+        webView.setWebChromeClient(new WebChromeClient() {
+            public void onProgressChanged(WebView view, int progress) {
+                // Activities and WebViews measure progress with different scales.
+                // The progress meter will automatically disappear when we reach 100%
+                activity.setProgress(progress * 1000);
+            }
+        });
+        webView.setWebViewClient(new WebViewClient() {
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                Toast.makeText(activity, "Oh no! " + description, Toast.LENGTH_SHORT).show();
+            }
+        });
+
         webView.loadUrl(postUrl);
-        webView.setHorizontalScrollBarEnabled(false);
-        FloatingActionButton floatingActionButton = findViewById(R.id.fab);
+        /*FloatingActionButton floatingActionButton = findViewById(R.id.fab);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SymptomsActivity.this, MainActivity.class));
             }
-        });
+        });*/
 
         // enable / disable javascript
         //webView.getSettings().setJavaScriptEnabled(true);
