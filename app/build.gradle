@@ -33,6 +33,10 @@ android {
         exclude 'META-INF/notice.txt'
         exclude 'META-INF/ASL2.0'
     }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
 }
 
 dependencies {
@@ -61,7 +65,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.4.0'
     implementation 'com.mindorks:placeholderview:0.7.1'
     implementation 'com.google.code.gson:gson:2.7'
-   // compile group: 'org.apache.httpcomponents' , name: 'httpclient-android' , version: '4.3.5.1'
+    // compile group: 'org.apache.httpcomponents' , name: 'httpclient-android' , version: '4.3.5.1'
     compile('org.apache.httpcomponents:httpmime:4.3.6') {
         exclude module: 'httpclient'
     }

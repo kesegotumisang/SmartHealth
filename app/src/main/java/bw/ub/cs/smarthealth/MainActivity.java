@@ -1,56 +1,22 @@
 package bw.ub.cs.smarthealth;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.design.widget.TabLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
     //Firebase Authentication
     public FirebaseAuth auth;
-    public static FirebaseDatabase firebaseDatabase;
-    public static DatabaseReference reference1;
-    public static DatabaseReference reference2;
-    public FragmentManager fragmentManager;
-    public Fragment fragment;
-
     //Views
     Button chatButton, newsButton, symptomsButton;
 
@@ -67,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         chatButton = findViewById(R.id.button_chat);
-        symptomsButton = findViewById(R.id.btn_symptoms);
-        newsButton = findViewById(R.id.btn_news);
+        Button stiFactsButton = findViewById(R.id.btn_sti_facts);
+        Button commonSTIButton = findViewById(R.id.btn_common_sti);
 
        chatButton.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -79,19 +45,19 @@ public class MainActivity extends AppCompatActivity {
            }
        });
 
-       symptomsButton.setOnClickListener(new View.OnClickListener() {
+       commonSTIButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
 
-               startActivity(new Intent(MainActivity.this, SymptomsActivity.class));
+               startActivity(new Intent(MainActivity.this,CommonSTIActivity.class));
            }
        });
 
-        newsButton.setOnClickListener(new View.OnClickListener() {
+        stiFactsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(MainActivity.this, NewsActivity.class));
+                startActivity(new Intent(MainActivity.this, STIFactsActivity.class));
             }
         });
 

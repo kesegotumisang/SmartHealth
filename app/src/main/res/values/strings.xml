@@ -24,6 +24,18 @@
     <string name="chat">Chat</string>
     <string name="todo">TODO</string>
     <string name="title_activity_home">HomeActivity</string>
+    <string name="common_sti">Human papillomavirus infection
+An infection that causes warts in various parts of the body, depending on the strain.
+Genital herpes
+A common sexually transmitted infection marked by genital pain and sores.
+Chlamydia
+A common sexually transmitted infection that may not cause symptoms.
+Gonorrhea
+A sexually transmitted bacterial infection that, if untreated, may cause infertility.
+HIV/AIDS
+HIV causes AIDS and interferes with the body's ability to fight infections.
+Syphilis
+A bacterial infection usually spread by sexual contact that starts as a painless sore.</string>
 
     <string name="auth_failed">Authentication failed, check your email and password or sign up</string>
     <string name="minimum_password">Password too short, enter minimum 6 characters!</string>

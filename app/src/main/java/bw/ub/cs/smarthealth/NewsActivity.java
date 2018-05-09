@@ -14,7 +14,7 @@ public class NewsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_news);
 
         Context mContext = this.getApplicationContext();
-        ExpandablePlaceHolderView mExpandableView = (ExpandablePlaceHolderView)findViewById(R.id.expandableView);
+        ExpandablePlaceHolderView mExpandableView = findViewById(R.id.expandableView);
         for(Feed feed : Utils.loadFeeds(this.getApplicationContext())){
             mExpandableView.addView(new HeadingView(mContext, feed.getHeading()));
             for(Info info : feed.getInfoList()){

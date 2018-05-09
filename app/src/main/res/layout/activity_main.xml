@@ -9,6 +9,21 @@
     tools:context=".MainActivity">
 
 
+    <Button
+        android:id="@+id/btn_common_sti"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/rounded_button"
+        android:padding="8dp"
+        android:text="Common STIs"
+        app:layout_constraintBottom_toTopOf="@+id/button_chat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
@@ -26,7 +41,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="257dp"
-        android:layout_height="301dp"
+        android:layout_height="185dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -37,29 +52,11 @@
         app:srcCompat="@drawable/ub_logo" />
 
     <Button
-        android:id="@+id/btn_news"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/rounded_button"
-        android:drawableStart="@drawable/ic_news"
-        android:padding="8dp"
-        android:text="News"
-        app:layout_constraintBottom_toTopOf="@+id/btn_symptoms"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <Button
         android:id="@+id/button_chat"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="0dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/rounded_button"
@@ -68,21 +65,20 @@
         android:text="@string/chat"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btn_symptoms"
+        android:id="@+id/btn_sti_facts"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/rounded_button"
         android:padding="8dp"
-        android:text="Symptoms Checker"
-        app:layout_constraintBottom_toTopOf="@+id/button_chat"
+        android:text="STI Facts"
+        app:layout_constraintBottom_toTopOf="@+id/btn_common_sti"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />

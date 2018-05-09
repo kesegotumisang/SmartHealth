@@ -32,7 +32,9 @@
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme" />
         <activity android:name=".SymptomsActivity" />
-        <activity android:name=".NewsActivity"></activity>
+        <activity android:name=".NewsActivity" />
+        <activity android:name=".CommonSTIActivity" />
+        <activity android:name=".STIFactsActivity"></activity>
     </application>
 
 </manifest>
